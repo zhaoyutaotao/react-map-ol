@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreact_map_ol=self.webpackChunkreact_map_ol||[]).push([[31],{95031:function(a,o,n){n.r(o),n.d(o,{Foo:function(){return r}});var c=n(85170),t=n(43010),u=function(s){return(0,t.jsxs)("h4",{children:[s.title,"\u6D4B\u8BD5"]})},r=u}}]);
