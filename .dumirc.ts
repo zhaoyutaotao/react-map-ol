@@ -8,9 +8,17 @@ export default defineConfig({
     name: 'react-map-ol', // 网站名称
     logo: '', // 网站logo
     nav: [
-      { title: 'Blog', link: '/guide' },
+      { title: 'Blog', link: '/api/map' },
       { title: '组件', link: '/components/foo' },
     ],
     footer: false,
+    socialLinks: {
+      github: 'https://github.com/zhaoyutaotao/react-map-ol.git',
+    },
+  },
+  apiParser: {},
+  resolve: {
+    // 配置入口文件路径，API 解析将从这里开始
+    entryFile: './src/index.ts',
   },
 });
