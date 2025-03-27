@@ -1,22 +1,13 @@
-/*
- * @Author: zhaoyutao 1048@163.com
- * @Date: 2023-05-22 12:24:29
- * @LastEditors: zhaoyutao 1048@163.com
- * @Description:
- */
-import React, { type FC, useEffect, CSSProperties } from 'react';
 import { default as Mapol } from 'ol/Map.js';
 import View from 'ol/View.js';
-import { Tile } from 'ol/layer';
-import { XYZ } from 'ol/source';
 import { FullScreen, defaults as defaultControls } from 'ol/control';
+import { Tile } from 'ol/layer';
 import 'ol/ol.css';
+import { XYZ } from 'ol/source';
+import React, { CSSProperties, useEffect, useMemo, type FC } from 'react';
 export interface MapProps {
-  /**
-   * @description 属性描述
-   * @default "默认值"
-   */
-  target: string | HTMLElement;
+  /**地图id */
+  mapId: string;
   /** 中心点坐标 */
   center: [number, number];
   /** 缩放级别 */
@@ -55,14 +46,17 @@ export interface MapProps {
   className?: string;
   /** 地图容器父元素的style样式 */
   style?: CSSProperties;
+  children?: React.ReactNode;
 }
 const Map: FC<MapProps> = (props) => {
   const {
-    target = 'map',
+    mapId = 'map',
     center = [116.46, 39.92],
     zoom = 10,
     minZoom = 0,
     maxZoom = 18,
+    style,
+    children,
   } = props;
   useEffect(() => {
     const view = new View({
@@ -79,13 +73,26 @@ const Map: FC<MapProps> = (props) => {
       }),
     });
     new Mapol({
-      target,
+      target: mapId,
       layers: [tileLayer],
       view,
       controls: defaultControls().extend([new FullScreen()]),
     });
   }, []);
-  return <div id="map" style={{ width: '100vw', height: '100vh' }}></div>;
+  const styles: CSSProperties = useMemo(
+    () => ({
+      position: 'relative',
+      width: '100vw',
+      height: '100vh',
+      ...style,
+    }),
+    [style],
+  );
+  return (
+    <div id={mapId} style={styles}>
+      {children}
+    </div>
+  );
 };
 
 export default Map;

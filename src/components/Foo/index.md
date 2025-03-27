@@ -1,8 +1,11 @@
 ---
-# title: Foo
+title: Foo
+order: 2 # 分组排序，值越小越靠前
 nav:
   title: 组件
-  order: 2
+group: # 分组
+  title: 容器组件 # 所在分组的名称
+  order: 2 # 分组排序，值越小越靠前
 ---
 
 # Foo
