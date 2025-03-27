@@ -10,7 +10,7 @@ group: # 分组
 
 # Foo
 
-This is an example component.
+This is an example components.
 
 ```jsx
 import { Foo } from 'react-map-ol';
